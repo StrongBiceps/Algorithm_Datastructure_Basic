@@ -21,5 +21,8 @@
     <ClCompile Include="median.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="MergeList.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
