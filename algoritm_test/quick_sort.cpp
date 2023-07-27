@@ -2,6 +2,48 @@
 #include <vector>
 using namespace std;
 
+/*
+*퀵 정렬 재귀의 예
+
+[5 1 6 4 3 7]
+
+quick_sort(5 1 6 4 3 7)
+->partition(5 1 6 4 3 7)
+  5 1 6 4 3 7
+  p L       R
+    1 6 4 3 7
+	  L   R
+결과 5 1 3 4 6 7
+			 R
+-> quick_sort(5 1 3 4) -> partition(5 1 3 4)
+						  5 1 3 4
+						  p L   R
+						  5 1 3 4(L==R)
+						  결과 4 1 3 5(R)
+						  ->quick_sort(4 1 3) -> partition(4 1 3)
+												 4 1 3
+												 P L R
+												 4 1 3(L==R)
+												 결과 3 1 4(R)
+												 ->quick_sort(3 1) -> partition(3 1)
+																	  3 1(L==R)
+																	  P 
+																	  결과 1 3
+												   quick_sort(4) -> 결과 4
+						    quick_sort(5) -> 결과 5
+   quick_sort(6 7) -> partition(6 7)
+					  6 7(L==R)
+					  P 
+					  결과 6 7(R)
+					  ->quick_sort(6) -> 결과 6
+					    quick_sort(7) -> 결과 7
+
+모든 재귀가 끝나서 최종 결과는 1 3 4 5 6 7
+부분 배열들을 병합하는 것이 아니라 부분 배열 안에서 반복자를 통해
+원소들의 위치를 교환한다. 따라서 quick_sort는 return값을 가지지 않고
+모든 재귀가 종료되었을 시에는 시퀀스가 정렬된 상태로 있다.
+*/
+
 //분할 동작을 위한 partition 함수를 다음과 같이 작성한다.
 //반복자는 값에 의한 복사를 해도 반복자 내부에는 원소를 가리키는 포인터가 있기 때문에
 //주소에 의한 호출과 같은 효과가 있다.
