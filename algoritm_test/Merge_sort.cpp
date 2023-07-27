@@ -3,20 +3,20 @@
 using namespace std;
 
 /*
-* º´ÇÕ Á¤·Ä Àç±ÍÀÇ ¿¹
-½ÃÄö½º 5 1 6 4 3 7
+* ë³‘í•© ì •ë ¬ ì¬ê·€ì˜ ì˜ˆ
+ì‹œí€€ìŠ¤ 5 1 6 4 3 7
 
-left_half = 5 1 6 -> left_half = 5 -> 5 ¸®ÅÏ
-			 right_half = 1 6 -> left_half = 1 ->1¸®ÅÏ
-			 return merge(1,5,6) right_half = 6->6¸®ÅÏ
-								 return merge(1 6)
-right_half = 4 3 7 -> left_half = 4 -> 4¸®ÅÏ
-			  right_half = 3 7 ->left_half = 3 -> 3¸®ÅÏ
-			  return merge(347)  right_half = 7 -> 7 ¸®ÅÏ
-								 return merge(3 7)
+left_half = 5 1 6 -> left_half = 5 -> 5 ë¦¬í„´
+			 right_half = 1 6 -> left_half = 1 ->1ë¦¬í„´
+			 return merge(1,5,6) right_half = 6->6ë¦¬í„´
+					     return merge(1 6)
+right_half = 4 3 7 -> left_half = 4 -> 4ë¦¬í„´
+			  right_half = 3 7 ->left_half = 3 -> 3ë¦¬í„´
+			  return merge(347)  right_half = 7 -> 7 ë¦¬í„´
+					 return merge(3 7)
 
-ÃÖÁ¾ÀûÀ¸·Î µÎ °³ÀÇ Á¤·ÄµÈ º¤ÅÍ°¡ mergeÇÔ¼ö¿¡ µé¾î°£´Ù.
-ÃÖÁ¾ return 1 3 4 5 6 7*/
+ìµœì¢…ì ìœ¼ë¡œ ë‘ ê°œì˜ ì •ë ¬ëœ ë²¡í„°ê°€ mergeí•¨ìˆ˜ì— ë“¤ì–´ê°„ë‹¤.
+ìµœì¢… return 1 3 4 5 6 7*/
 
 template<typename T>
 vector<T> merge(vector<T>& arr1, vector<T>& arr2)
@@ -26,7 +26,7 @@ vector<T> merge(vector<T>& arr1, vector<T>& arr2)
 	auto iter1 = arr1.begin();
 	auto iter2 = arr2.begin();
 
-	//µÎ º¤ÅÍÀÇ ¿ø¼ÒµéÀ» ºñ±³ÇÏ¸ç ÀÛÀº °ÍºÎÅÍ merged¿¡ push
+	//ë‘ ë²¡í„°ì˜ ì›ì†Œë“¤ì„ ë¹„êµí•˜ë©° ì‘ì€ ê²ƒë¶€í„° mergedì— push
 	while (iter1 != arr1.end() && iter2 != arr2.end())
 	{
 		if (*iter1 < *iter2)
@@ -34,8 +34,8 @@ vector<T> merge(vector<T>& arr1, vector<T>& arr2)
 			merged.emplace_back(*iter1);
 			++iter1;
 		}
-		//µÎ ¿ø¼Ò°¡ °°´Ù¸é ¾î´À º¤ÅÍ¿¡¼­ »Ì¾Æµµ »ó°ü ¾ø´Ù. Áö±İÀº 
-		//arr2¿¡¼­ »Ì´Â´Ù.
+		//ë‘ ì›ì†Œê°€ ê°™ë‹¤ë©´ ì–´ëŠ ë²¡í„°ì—ì„œ ë½‘ì•„ë„ ìƒê´€ ì—†ë‹¤. ì§€ê¸ˆì€ 
+		//arr2ì—ì„œ ë½‘ëŠ”ë‹¤.
 		else
 		{
 			merged.emplace_back(*iter2);
@@ -43,7 +43,7 @@ vector<T> merge(vector<T>& arr1, vector<T>& arr2)
 		}
 	}
 	
-	//µÎ º¤ÅÍÁß ¿ø¼Ò°¡ ³²¾ÆÀÖ´Â °Ô ÀÖ´Ù¸é ³²Àº ¿ø¼ÒµéÀ» merged¿¡ push
+	//ë‘ ë²¡í„°ì¤‘ ì›ì†Œê°€ ë‚¨ì•„ìˆëŠ” ê²Œ ìˆë‹¤ë©´ ë‚¨ì€ ì›ì†Œë“¤ì„ mergedì— push
 	if (iter1 != arr1.end())
 	{
 		for (; iter1 != arr1.end(); ++iter1)
@@ -64,9 +64,9 @@ vector<T> merge_sort(vector<T> arr)
 	if (arr.size() > 1)
 	{
 		auto mid = size_t(arr.size() / 2);
-		//beginºÎÅÍ begin()+mid ¹Ù·Î Àü ¿ø¼Ò±îÁö Àü´ŞÇÑ´Ù.
+		//beginë¶€í„° begin()+mid ë°”ë¡œ ì „ ì›ì†Œê¹Œì§€ ì „ë‹¬í•œë‹¤.
 		auto left_half = merge_sort<T>(vector<T>(arr.begin(), arr.begin() + mid));
-		//begin()+midºÎÅÍ end()¹Ù·Î Àü±îÁö Àü´ŞÇÑ´Ù.
+		//begin()+midë¶€í„° end()ë°”ë¡œ ì „ê¹Œì§€ ì „ë‹¬í•œë‹¤.
 		auto right_half = merge_sort<T>(vector<T>(arr.begin() + mid, arr.end()));
 
 		return merge<T>(left_half, right_half);
@@ -74,7 +74,7 @@ vector<T> merge_sort(vector<T> arr)
 	return arr;
 }
 
-//º¤ÅÍ¿¡ Æ÷ÇÔµÈ ¸ğµç µ¥ÀÌÅÍ¸¦ Ãâ·ÂÇÏ´Â ÇÔ¼ö¸¦ ÀÛ¼ºÇÑ´Ù.
+//ë²¡í„°ì— í¬í•¨ëœ ëª¨ë“  ë°ì´í„°ë¥¼ ì¶œë ¥í•˜ëŠ” í•¨ìˆ˜ë¥¼ ì‘ì„±í•œë‹¤.
 template<typename T>
 void print_vector(vector<T> arr)
 {
@@ -90,7 +90,7 @@ void run_merge_sort_test()
 	vector<double> S3{45.6, 1.0, 3.8, 1.01, 2.2, 3.9, 45.3, 5.5, 1.0, 2.0, 44.0, 5.0, 7.0 };
 	vector<char> C{'b', 'z', 'a', 'e', 'f', 't', 'q', 'u', 'y'};
 
-	cout << "Á¤·ÄµÇÁö ¾ÊÀº ÀÔ·Â º¤ÅÍ" << endl;
+	cout << "ì •ë ¬ë˜ì§€ ì•Šì€ ì…ë ¥ ë²¡í„°" << endl;
 	print_vector<int>(S1);
 	print_vector<float>(S2);
 	print_vector<double>(S3);
@@ -101,7 +101,7 @@ void run_merge_sort_test()
 	auto sorted_S3 = merge_sort<double>(S3);
 	auto sorted_C = merge_sort<char>(C);
 
-	cout << "º´ÇÕ Á¤·Ä¿¡ ÀÇÇØ Á¤·ÄµÈ º¤ÅÍ" << endl;
+	cout << "ë³‘í•© ì •ë ¬ì— ì˜í•´ ì •ë ¬ëœ ë²¡í„°" << endl;
 	print_vector<int>(sorted_S1);
 	print_vector<float>(sorted_S2);
 	print_vector<double>(sorted_S3);
