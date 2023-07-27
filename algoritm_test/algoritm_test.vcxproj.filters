@@ -42,5 +42,8 @@
     <ClCompile Include="Binary_Search.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Merge_sort.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
