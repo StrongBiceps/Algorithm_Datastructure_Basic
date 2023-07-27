@@ -39,5 +39,8 @@
     <ClCompile Include="hash_combine().cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Binary_Search.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
