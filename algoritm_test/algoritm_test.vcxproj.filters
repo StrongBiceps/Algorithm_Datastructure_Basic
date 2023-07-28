@@ -51,5 +51,8 @@
     <ClCompile Include="Linear_time_selection.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Quick_select.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

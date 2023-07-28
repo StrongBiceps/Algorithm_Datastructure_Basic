@@ -4,7 +4,7 @@ using namespace std;
 /*
 피봇 값을 기준으로 오른쪽에는 pivot보다 큰 원소들이, 왼쪽에는 pivot보다 작거나 같은 원소들이 위치한다.
 while문을 벗어났을 때 L과 R이 만나는 지점을 기준으로 오른쪽은 pivot보다 커야 한다.
-그러나 pivot이 right_iter보다 클 경우에는 해당 위치로 피벗이 들어가야 한다는 소리이다. 
+그러나 pivot이 right_iter보다 클 경우에는 해당 위치로 피벗이 들어가야 한다는 소리이다.
 right_iter부터는 무조건 피벗보다 큰 값들이 들어가야 한다. 피벗의 초기 위치에 관계 없이 적용된다.
 다음과 같은 상황이 예이다.
 1 5 3 4 2
@@ -13,7 +13,7 @@ L p     R
 
 1 4 3 5 2
 L     p R
-      p LR
+	  p LR
 
 	  피벗이 5라고 하면 피벗이 어디에 위치해 있든 LR보다 피벗이 크면 잘못된 위치에 피벗이 존재하는 것이다.
 	  따라서 교환해준다.
@@ -249,7 +249,7 @@ vector<T> merge_sort(vector<T> arr)
 
 void run_linear_select_test()
 {
-	
+
 	vector<int> S1{45, 1, 3, 1, 2, 3, 45, 5, 1, 2, 44, 5, 7};
 	cout << "입력 벡터: " << endl;
 	print_vector<int>(S1);
@@ -261,11 +261,11 @@ void run_linear_select_test()
 	print_vector<int>(S1);
 	cout << "3번째 원소: " << *linear_time_select<int>(S1.begin(), S1.end() - 1, 4);
 	cout << endl;
-   cout << "5번째 원소: " << *linear_time_select<int>(S1.begin(), S1.end() - 1, 5);
+	cout << "5번째 원소: " << *linear_time_select<int>(S1.begin(), S1.end() - 1, 5);
 	cout << endl;
 	cout << "11번째 원소: " << *linear_time_select<int>(S1.begin(), S1.end() - 1, 11);
 	cout << endl;
-	
+
 	//vector<int> S2{1, 2, 3, 4,5,6,7,8,9,10};
 	//cout << *linear_time_select<int>(S2.begin(), S2.end() - 1, );
 }
