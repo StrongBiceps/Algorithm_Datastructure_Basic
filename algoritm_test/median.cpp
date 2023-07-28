@@ -11,7 +11,7 @@ private:
 	//최대 힙과 최소 힙을 선언한다.
 	priority_queue<int> MaxHeap;
 	//힙을 이루는 자료구조는 vector이고 greater<int> functor를 전달하여 최소 힙을 구성한다.
-	priority_queue<int, vector<int>, greater<int>> MinHeap;
+	priority_queue<int,vector<int> ,greater<int>> MinHeap;
 
 public:
 	void insert(int data)

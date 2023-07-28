@@ -1,2 +1,13 @@
-﻿  quick_sort.cpp
+﻿  Linear_time_selection.cpp
+C:\Users\user\Desktop\algorithm_test\algoritm_test\Linear_time_selection.cpp(136,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\user\Desktop\algorithm_test\algoritm_test\Linear_time_selection.cpp(262,33): message : 컴파일되는 함수 템플릿 인스턴스화 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> linear_time_select<int>(std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,size_t)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\user\Desktop\algorithm_test\algoritm_test\Linear_time_selection.cpp(147,12): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\user\Desktop\algorithm_test\algoritm_test\Linear_time_selection.cpp(157,13): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\user\Desktop\algorithm_test\algoritm_test\Linear_time_selection.cpp(185,14): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\user\Desktop\algorithm_test\algoritm_test\Linear_time_selection.cpp(187,14): warning C4018: '>': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\user\Desktop\algorithm_test\algoritm_test\Linear_time_selection.cpp(194): warning C4715: 'linear_time_select<int>': 모든 제어 경로에서 값을 반환하지는 않습니다.
   algoritm_test.vcxproj -> C:\Users\user\Desktop\algorithm_test\x64\Debug\algoritm_test.exe

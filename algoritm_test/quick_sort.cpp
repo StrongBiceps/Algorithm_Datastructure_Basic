@@ -56,8 +56,8 @@ auto partition(typename vector<T>::iterator begin, typename vector<T>::iterator 
 	auto left_iter = begin + 1;
 	auto right_iter = end;
 
-	//피벗을 중심으로 피벗보다 작은 원소들은 피벗의 왼쪽으로 이동시키고,
-	//피벗보다 크거나 같은 원소들은 피벗의 오른쪽으로 이동시킨다.
+	//피벗을 중심으로 피벗보다 작거나 같은 원소들은 피벗의 왼쪽으로 이동시키고,
+	//피벗보다 큰 원소들은 피벗의 오른쪽으로 이동시킨다.
 	//left와 right가 같아지면 while을 벗어나는 이유는 피벗을 중심으로 
 	//왼쪽은 이미 피벗보다 작고 오른쪽은 피벗보다 크다는 의미이다. 따라서 다른 연산을 할 필요가 없다.
 	// 예를 들어 5 1 2 6 7 의 시퀀스가 있다고 하고 피벗이 5라고 한다면, left_iter와 right_iter는 6에서 만날 것이다.
