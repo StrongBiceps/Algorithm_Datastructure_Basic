@@ -186,3 +186,8 @@ partition함수로 분할한다. 결과로, 왼쪽에는 피벗보다 같거나 
 # STL Divide & conquer function
 
 c++표준 라이브러리 함수중에 분할 정복 패러다임 알고리즘을 구현할 때 사용할 수 있는 유용한 함수들의 정리이다.
+
+# Mersenne twister & random_device
+
+메르센 트위스터와 random_device로 시드를 랜덤하게 초기화한 후 난수를 생성하는 코드이다.
+난수를 이용하여 야구 게임과 롯또 숫자 생성기를 만들었다.
