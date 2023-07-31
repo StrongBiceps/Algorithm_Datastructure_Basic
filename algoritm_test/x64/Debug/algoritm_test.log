@@ -1,2 +1,23 @@
-﻿  Circle_list.cpp
+﻿  Quick_select.cpp
+C:\Users\user\Desktop\algorithm_test\algoritm_test\Quick_select.cpp(114,16): warning C4267: 'return': 'size_t'에서 'T'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=int
+          ]
+C:\Users\user\Desktop\algorithm_test\algoritm_test\Quick_select.cpp(74,12): message : 컴파일되는 함수 템플릿 인스턴스화 'T quickselect_pos<int>(std::vector<int,std::allocator<int>> &,size_t,size_t,size_t)'에 대한 참조를 확인하세요.
+          with
+          [
+              T=int
+          ]
+C:\Users\user\Desktop\algorithm_test\algoritm_test\Quick_select.cpp(140,24): message : 컴파일되는 함수 템플릿 인스턴스화 'size_t choose_pivot<int>(std::vector<int,std::allocator<int>> &,size_t,size_t)'에 대한 참조를 확인하세요.
+C:\Users\user\Desktop\algorithm_test\algoritm_test\Quick_select.cpp(161,17): message : 컴파일되는 함수 템플릿 인스턴스화 'T quickselect<int>(std::vector<int,std::allocator<int>> &,size_t,size_t,size_t)'에 대한 참조를 확인하세요.
+          with
+          [
+              T=int
+          ]
+C:\Users\user\Desktop\algorithm_test\algoritm_test\Quick_select.cpp(123,16): warning C4267: 'return': 'size_t'에서 'T'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=int
+          ]
   algoritm_test.vcxproj -> C:\Users\user\Desktop\algorithm_test\x64\Debug\algoritm_test.exe

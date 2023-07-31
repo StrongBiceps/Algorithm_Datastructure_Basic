@@ -3,6 +3,8 @@
 #include <vector>
 using namespace std;
 
+//push_heap에서 비교자는 > 를 사용하면 최소 힙이 되고 
+//< 를 사용하면 최대 힙이 된다.
 class MergeList
 {
 private:
@@ -39,7 +41,7 @@ vector<int> MergeList::merge(const vector<vector<int>>& input)
 			//위로 위치시킨다.
 			return left.listposition > right.listposition;
 		}
-		return left.data > right.data;
+		return left.data < right.data;
 	};
 
 	//노드를 자료형으로 갖는 벡터 정의
@@ -52,9 +54,9 @@ vector<int> MergeList::merge(const vector<vector<int>>& input)
 		//각 리스트에서 최소이므로 index 0에 위치한다.
 		heap.push_back({ input[i][0],i,0 });
 		//힙을 최소 힙으로 만들기 위해 push_heap으로 vector를 정렬
-		push_heap(heap.begin(), heap.end(), comparator);
+		push_heap(heap.begin(), heap.end(),comparator);
 	}
-
+	cout << heap.front().data << endl;
 	vector<int> result;
 	while (!heap.empty())
 	{
@@ -101,4 +103,5 @@ int main()
 	{
 		cout << i << " ";
 	}
+	return 0;
 }

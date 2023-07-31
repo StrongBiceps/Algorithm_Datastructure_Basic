@@ -25,6 +25,24 @@ using namespace std;
 * 찾는 원소가 피벗보다 작다면 왼쪽을 다시 분할하고, 크다면
 * 오른쪽을 다시 분할하면서 값을 찾는다.
 * 이진 탐색과 유사한 측면이 보인다.
+* 
+*  중간값들을 앞으로 몰아놓은 이유
+* 
+*  중간값들을 앞으로 몰아놓은 후 quickselect_pos로 앞으로 몰아놓은 만큼만 index를 전달한다.
+   quickselect_pos에서 중앙값들의 중앙값을 index로 return한다. 따라서 중앙값의 중앙값을 quickselect_pos에서
+   구하기 위해서 앞으로 전부 몰아놓고 호출하는 것이다.
+
+   그러면 가장 상위 호출자인 quickselect의 pivot이 중앙값의 중앙값으로 정해지고 partition을 호출하여 
+   중앙값의 중앙값을 기준으로 시퀀스를 분할한다. 
+
+   정렬이 완벽히 되지 않아도 k만 만족하면 n번째 값이 정확히 나오는 이유
+   피벗을 기준으로 정렬을 했기 때문에 피벗 왼쪽은 무조건 피벗보다 작고 오른쪽은 피벗보다 크므로
+   현재 피벗이 위치한 index가 정확이 n번째 위치이다. 따라서 이렇게 완전히 정렬하지 않아도 n번째 원소를
+   구할 수 있다.
+
+   quickselect 알고리즘은 o(N)시간 복잡도를 가진다. 만약 quickselect를 사용하지 않고 k번째 원소를 찾는다면
+   시퀀스를 정렬하고 찾아야 한다. 그러나 보통 정렬 알고리즘은 o(n log n)의 시간 복잡도를 가진다. 따라서
+   k번째 원소를 찾을 때의 빠르다는 장점이 있는 것이다.
 */
 template <typename T>
 T quickselect_pos(std::vector<T>& data, size_t start, size_t end, size_t k);
@@ -54,6 +72,7 @@ size_t choose_pivot(std::vector<T>& data, size_t start, size_t end) {
         //quickselect_pos함수가 데이터를 구간 형태로 받으므로, 중간값들이 한 군데에 모여 있어야 한다.
         //또한 quickselect가 아닌 quickselect_pos를 사용하는 이유는 choose_pivot함수가 피벗의 값이 아니라
         //피벗의 위치를 리턴해야 하기 때문이다.
+
         std::iter_swap(data.begin() + current, data.begin() + med_pos);
         current++;
     }
