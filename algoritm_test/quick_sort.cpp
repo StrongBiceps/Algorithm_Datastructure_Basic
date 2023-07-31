@@ -65,6 +65,9 @@ auto partition(typename vector<T>::iterator begin, typename vector<T>::iterator 
 	//왼쪽은 피벗보다 작고 만난 지점을 포함한 오른쪽은 피벗보다 큰 것이다.
 	while (true)
 	{
+		//위 아래의 >= <=는 전혀 상관이 없다. 
+		//즉 피벗과 같은 값들이 왼쪽에 있는가 오른쪽에 있는가인데 어디에 있어도 상관 없다.
+		
 		//벡터의 첫 번째 원소부터 시작하여 피벗보다 큰 원소를 찾는다.
 		while (*left_iter <= pivot_val && distance(left_iter, right_iter) > 0)
 			++left_iter;
