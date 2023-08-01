@@ -99,5 +99,11 @@
     <ClCompile Include="Move_0.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="reverse_user_version.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="strlen_user_version.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
