@@ -247,4 +247,10 @@ const 객체에 대해서 클래스 멤버 함수중에 가변 참조를 리턴�
 
 가위 바위 보 예제이다.
 
+# strlen_user_version
 
+strlen의 내부 동작을 아주 약소하게 구현한 것이다.
+
+# reverse_user_version
+
+문자열을 뒤집는 함수를 구현한 것이다.
