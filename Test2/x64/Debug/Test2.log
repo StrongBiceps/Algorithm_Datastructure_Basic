@@ -1,6 +1,0 @@
-﻿  1.cpp
-C:\Users\user\Desktop\algoritm_test\Test2\1.cpp(104,1): error C4430: 형식 지정자가 없습니다. int로 가정합니다. 참고: C++에서는 기본 int를 지원하지 않습니다.
-C:\Users\user\Desktop\algoritm_test\Test2\1.cpp(162,2): message : 컴파일되는 클래스 템플릿 인스턴스화 'Single_list<T>'에 대한 참조를 확인하세요.
-C:\Users\user\Desktop\algoritm_test\Test2\1.cpp(104,1): warning C4183: 'SIngle_list': 반환 형식이 없습니다. 'int'를 반환하는 멤버 함수로 간주됩니다.
-C:\Users\user\Desktop\algoritm_test\Test2\1.cpp(26,37): error C2760: 구문 오류: 여기서 ','은(는) 예상치 못한 오류였습니다. 예상된 오류는 '형식 지정자'였습니다
-C:\Users\user\Desktop\algoritm_test\Test2\1.cpp(26,44): error C2760: 구문 오류: 여기서 '}'은(는) 예상치 못한 오류였습니다. 예상된 오류는 ';'였습니다
