@@ -17,6 +17,8 @@ void convert_90_Deg(int(&_iArr)[Arr_Row][Arr_Column])
 		for (register int j = 0; j < Arr_Column; ++j)
 		{
 			/*
+   			//1행을 3열로 switch하는 규칙으로 짠 코드
+      			//1줄로 모든 규칙을 설명할 수 없다.
 			if (i == 2)
 			{
 				iTemp[i-j][2-i] = _iArr[i][i-j];
@@ -27,7 +29,9 @@ void convert_90_Deg(int(&_iArr)[Arr_Row][Arr_Column])
 			}*/
 
 			//i == 2 ? iTemp[i - j][2 - i] = _iArr[i][i - j] : iTemp[j][2 - i] = _iArr[i][j];
-
+				
+			//1열을 1행으로 switch하는 규칙으로 짠 코드
+			//1줄로 모든 규칙을 설명할 수 있다.
 			iTemp[i][j] = _iArr[2 - j][i];
 		}
 	}
