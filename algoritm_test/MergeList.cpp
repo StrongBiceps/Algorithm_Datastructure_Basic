@@ -60,6 +60,9 @@ vector<int> MergeList::merge(const vector<vector<int>>& input)
 	vector<int> result;
 	while (!heap.empty())
 	{
+		//vector에서는 pop.front()를 할 수 없으므로 front와 back()을 교체하고 pop.back을 사용하여
+		//최솟값을 제거한다.
+		
 		//heap의 최소 원소를 heap의 가장 마지막 원소와 교체
 		pop_heap(heap.begin(), heap.end(), comparator);
 		//따라서 heap의 마지막 노드가 가장 작은 값이 된다.
