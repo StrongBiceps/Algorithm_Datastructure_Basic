@@ -35,9 +35,9 @@ public:
 	}
 	void pop_front()
 	{
-		//first¸¦ ¼±¾ğÇÏ´Â ÀÌÀ¯´Â ¿ø·¡ÀÇ head¸¦ first¿¡ ÀúÀåÇØ ³õ°í head¸¦ ¿Å±ä ÈÄ 
-		//¿ø·¡ÀÇ head¸¦ ÇØÃ¼ÇÏ·Á´Â ÀÌÀ¯´Ù. head¸¦ Á÷Á¢ ´Ù·ç°Ô µÇ¸é head=head->next;
-		//¸¦ ÇØ³õ°í delete headÇÏ¸é ÀÇ¹Ì°¡ ¾ø±â ¶§¹®ÀÌ´Ù.
+		//firstë¥¼ ì„ ì–¸í•˜ëŠ” ì´ìœ ëŠ” ì›ë˜ì˜ headë¥¼ firstì— ì €ì¥í•´ ë†“ê³  headë¥¼ ì˜®ê¸´ í›„ 
+		//ì›ë˜ì˜ headë¥¼ í•´ì²´í•˜ë ¤ëŠ” ì´ìœ ë‹¤. headë¥¼ ì§ì ‘ ë‹¤ë£¨ê²Œ ë˜ë©´ head=head->next;
+		//ë¥¼ í•´ë†“ê³  delete headí•˜ë©´ ì˜ë¯¸ê°€ ì—†ê¸° ë•Œë¬¸ì´ë‹¤.
 		auto first = head;
 		if (head)
 		{
@@ -61,12 +61,12 @@ public:
 		{
 			return ptr;
 		}
-		Single_list_it& operator++() //¼±Çà Áõ°¡
+		Single_list_it& operator++() //ì„ í–‰ ì¦ê°€
 		{
 			ptr = ptr->next;
 			return *this;
 		}
-		Single_list_it operator++(int)//ÈÄÇà Áõ°¡
+		Single_list_it operator++(int)//í›„í–‰ ì¦ê°€
 		{
 			Single_list_it it_temp = *this;
 			++(*this);
@@ -80,6 +80,18 @@ public:
 		{
 			return it1.ptr != it2.ptr;
 		}
+		//ì•„ë˜ í•¨ìˆ˜ë“¤ì€ ==ì™€ != ì—°ì‚°ì ì˜¤ë²„ë¡œë”© í•¨ìˆ˜ë“¤ì„ ì™¸ë¶€ í•¨ìˆ˜ë¡œ ì„ ì–¸í•˜ì§€ ì•Šê³  iteratorí´ë˜ìŠ¤ì˜ ë©¤ë²„ í•¨ìˆ˜ë¡œ ì„ ì–¸í–ˆë‹¤.
+		//ìœ„ í•¨ìˆ˜ì™€ ë˜‘ê°™ì´ ì˜ ì‘ë™í•œë‹¤.
+		//bool operator==(/*const Single_list_it& it1,*/ const Single_list_it& it2)
+		//{
+		//	/*return it1.ptr == it2.ptr;*/
+		//	return this->ptr == it2.ptr;
+		//}
+		//bool operator!=(/*const Single_list_it& it1,*/ const Single_list_it& it2)
+		//{
+		//	/*return it1.ptr != it2.ptr;*/
+		//	return this->ptr == it2.ptr;
+		//}
 	};
 
 	Single_list_it begin()
@@ -114,7 +126,7 @@ public:
 			auto it = other.begin();
 			while (true)
 			{
-				//head´Â ¹Ù²îÁö ¾Ê°í °è¼Ó µÚ·Î »ğÀÔÇÑ´Ù.(push_back°ú °°Àº µ¿ÀÛ)
+				//headëŠ” ë°”ë€Œì§€ ì•Šê³  ê³„ì† ë’¤ë¡œ ì‚½ì…í•œë‹¤.(push_backê³¼ ê°™ì€ ë™ì‘)
 				cur->Data = new T(*it);
 				++n;
 				/*
@@ -139,8 +151,8 @@ public:
 	}
 	Single_list(const std::initializer_list<int>& ilist) :Single_list()
 	{
-		//rebegin()°ú rend()´Â ÀÓ½Ã °´Ã¼¶ó¼­ &&¸¦ »ç¿ëÇÏ°Å³ª auto¸¸ »ç¿ëÇÑ´Ù.
-		//ÀÏ¹İ ÂüÁ¶´Â »ç¿ëÇÒ ¼ö ¾ø´Ù.
+		//rebegin()ê³¼ rend()ëŠ” ì„ì‹œ ê°ì²´ë¼ì„œ &&ë¥¼ ì‚¬ìš©í•˜ê±°ë‚˜ autoë§Œ ì‚¬ìš©í•œë‹¤.
+		//ì¼ë°˜ ì°¸ì¡°ëŠ” ì‚¬ìš©í•  ìˆ˜ ì—†ë‹¤.
 		for (auto&& it = rbegin(ilist); it != rend(ilist); ++it)
 		{
 			push_front(*it);
