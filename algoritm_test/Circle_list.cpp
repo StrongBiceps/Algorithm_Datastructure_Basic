@@ -78,6 +78,7 @@ public:
 				n--;
 				return;
 			}
+			cur = cur->next;
 		}
 	}
 	//Iterator Pattern
