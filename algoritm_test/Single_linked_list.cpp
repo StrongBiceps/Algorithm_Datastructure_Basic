@@ -116,6 +116,8 @@ public:
 		head = NULL;
 		n = 0;
 	}
+	//other 리스트 원소 순서 그대로 가져온다고 생각해라. 따라서 other.begin()을 head에 넣고 각각 다음 원소로 이동하면서
+	//삽입하면 될 것이다.
 	Single_list(const Single_list& other) :Single_list()
 	{
 		if (other.head)
