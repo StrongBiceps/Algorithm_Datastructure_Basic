@@ -259,3 +259,258 @@ int main()
 	//std::cout << "equal test: " << (it1 == it2) << std::endl;
 	return 0;
 }
+
+/*
+*****반복자로 원형 순회가 가능하게 한 버전 (위 버전은 반복자로 ++연산이나 --연산을 하다가 dummy를 만나게 되면 액세스 위반
+	오류가 남 그러나 아래 버전은 다음 노드나 이전 노드가 더미 노드일 때 더미 노드를 건너 뛰어서 유효한 노드를 반환하게 함)
+
+	#include <iostream>
+using namespace std;
+
+template<typename T>
+class Cir_list
+{
+private:
+	class Cir_list_node
+	{
+	public: //private으로 선언 시 외부 클래스에서 사용할 수 없으므로 public 선언
+		T* Data;
+		Cir_list_node* next;
+		Cir_list_node* prev;
+
+		~Cir_list_node()
+		{
+			delete Data;
+		}
+	};
+public:
+	using node = Cir_list_node;
+	using node_ptr = node*;
+
+private:
+	node_ptr head;
+	size_t n;
+public:
+	Cir_list() : n(0)
+	{
+		head = new node{ NULL,NULL,NULL };
+		head->next = head;
+		head->prev = head;
+	}
+	size_t Size() const
+	{
+		return n;
+	}
+	void insert(T value)
+	{
+		auto new_node = new node{ new T(value),NULL,NULL };
+		++n;
+		auto dummy = head->prev;
+		dummy->next = new_node;
+		new_node->prev = dummy;
+		if (head == dummy)
+		{
+			dummy->prev = new_node;
+			new_node->next = dummy;
+			head = new_node;
+			return;
+		}
+		new_node->next = head;
+		head->prev = new_node;
+		head = new_node;
+	}
+	void erase(const T& value)
+	{
+		//head가 dummy라면 아무 작업도 하지 않고 함수를 종료한다.
+		auto cur = head;
+		auto dummy = head->prev;
+
+		while (cur != dummy)
+		{
+			if (*(cur->Data) == value)
+			{
+				cur->prev->next = cur->next;
+				cur->next->prev = cur->prev;
+				if (head == cur)
+				{
+					head = head->next;
+				}
+				delete cur;
+				n--;
+				return;
+			}
+			cur = cur->next;
+		}
+	}
+	//Iterator Pattern
+	class Cir_list_it
+	{
+	private:
+		node_ptr ptr;
+	public:
+		Cir_list_it(node_ptr p) :ptr(p) {}
+
+		T& operator*()
+		{
+			return *(ptr->Data);
+		}
+		node_ptr get()
+		{
+			return ptr;
+		}
+		Cir_list_it& operator++()
+		{
+			//다음이 더미 노드라면 헤드를 반환
+			if (ptr->next->Data == NULL)
+			{
+				ptr = ptr->next->next;
+				return *this;
+			}
+
+			ptr = ptr->next;
+			return *this;
+		}
+		Cir_list_it operator++(int)
+		{
+			Cir_list_it it = *this;
+
+			//다음이 더미 노드라면 헤드를 반환
+			if (*this->ptr->next->Data == NULL)
+			{
+				ptr = ptr->next->next;
+
+				return it;
+			}
+
+			++(*this);
+			return it;
+		}
+		Cir_list_it& operator--()
+		{
+			//이전이 더미 노드라면 마지막 노드를 반환
+			if (ptr->prev->Data == NULL)
+			{
+				ptr = ptr->prev->prev;
+				return *this;
+			}
+
+			ptr = ptr->prev;
+			return *this;
+		}
+		Cir_list_it& operator--(int)
+		{
+			//이전이 더미 노드라면 마지막 노드를 반환
+			if (*this->ptr->prev->Data == NULL)
+			{
+				ptr = ptr->prev->prev;
+
+				return it;
+			}
+
+			Cir_list_it it = *this;
+			--(*this);
+			return it;
+		}
+
+		//friend로 선언해야 클래스 외부에서 호출할 수 있다.
+		//범위 기반 반복문에서 호출한다.
+		friend bool operator==(const Cir_list_it& it1, const Cir_list_it& it2)
+		{
+			return it1.ptr == it2.ptr;
+		}
+		friend bool operator!=(const Cir_list_it& it1, const Cir_list_it& it2)
+		{
+			return it1.ptr != it2.ptr;
+		}
+	};
+
+	using it = Cir_list_it;
+	it begin()
+	{
+		return it(head);
+	}
+	it begin() const
+	{
+		return it(head);
+	}
+	it end()
+	{
+		return it(head->prev);
+	}
+	it end() const
+	{
+		return it(head->prev);
+	}
+	Cir_list(const Cir_list<T>& other) :Cir_list()
+	{
+		for (const auto i : other)
+		{
+			insert(i);
+		}
+	}
+	Cir_list(Cir_list<T>&& other) noexcept :Cir_list()
+	{
+		head = other.head;
+		other.head = NULL;
+		n = other.n;
+		other.n = 0; 
+	}
+	Cir_list(const std::initializer_list<T>& il) :Cir_list()
+	{
+		for (const auto& i : il)
+		{
+			insert(i);
+		}
+	}
+	~Cir_list()
+	{
+		if (head != NULL)
+		{
+			while (Size())
+			{
+				erase(*(head->Data));
+			}
+		}
+		delete head;
+	}
+	void printall()
+	{
+		for (auto& i : *this)
+		{
+			std::cout << i << " ";
+		}
+	}
+};
+
+class Playlist
+{
+public:
+	Cir_list<int> list;
+
+	void insert(int song)
+	{
+		list.insert(song);
+	}
+	void erase(int song)
+	{
+		list.erase(song);
+	}
+	void loopOnce()
+	{
+		list.printall();
+	}
+};
+
+int main()
+{
+	Cir_list<int> C1;
+	C1.insert(1);
+	C1.insert(2);
+	auto temp = C1.begin();
+	cout << *temp << endl;
+	++temp;
+	cout << *temp << endl;
+	++temp;
+	cout << *temp << endl;
+	return 0;
+}
