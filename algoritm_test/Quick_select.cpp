@@ -98,6 +98,8 @@ size_t partition(std::vector<T>& data, size_t start, size_t end,
     //피벗보다 작은 값은 왼쪽으로 보내기 위해서 지금까지 지나쳐왔던 원소(인덱스가 current_small_loc인)
     //와 교환한다. 따라서 data[current_small_loc]은 피벗보다 크므로 큰 원소는 오른쪽으로 정렬된다.
     //또 교환 후에는 current_small_loc를 하나 증가시켜 다음 원소를 가리키게 한다.(data[current_small_loc]은 swap으로 인해 이제 피벗보다 작으므로)
+    //for loop 마지막 반복에서 data[end] == pivot이기 때문에 피벗또한 알맞는 위치로 이동되게 된다. 그리고 반환되는 pos값도 피벗의
+    //바뀐 위치가 된다.(pos왼쪽은 피벗보다 작고 오른쪽은 피벗보다 큰)
     cout << endl;
     for (size_t i = start; i <= end; ++i)
     {
