@@ -90,6 +90,13 @@ auto partition(typename vector<T>::iterator begin, typename vector<T>::iterator 
 
 	//피벗을 중심으로 왼쪽과 오른쪽이 크기에 맞게 배치되었다면, right_iter와 pivot을 비교한다.
 	//만약 right_iter가 더 작다면 피봇과 위치를 바꿔야 왼쪽과 오른쪽에 각각 크기에 맞는 원소가 배치되게 된다.
+
+	//quick_sort<T>(begin, partition_iter - 1);
+	//quick_sort<T>(partition_iter, last);
+	//반환하는 right_iter가 곧 partition_iter인데,begin에서 partition_iter-1까지 정렬, 
+	//partition_iter부터 end까지 정렬하므로, right_iter가 pivot보다 작게 되면 
+	//피봇을 기준으로 작은 값들과 큰 값들로 나누어 정렬할 수 없게 된다. 따라서
+	//partition_iter ~ end 까지 묶어서 정렬하기 때문에 right_iter와 pivot을 비교하여 바꾸는 것이다.
 	if (pivot_val > *right_iter)
 	{
 		iter_swap(begin, right_iter);
