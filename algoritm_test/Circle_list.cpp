@@ -42,6 +42,7 @@ public:
 		//head는 자기 자신을 가리킨다. 이 head가 가장 마지막 노드인
 		//dummy노드이다. dummy와 head 사이에 new_node를 삽입하기 때문에
 		//가장 마지막 노드는 바뀌지 않는다.
+		//또한 head와 dummy 사이에 삽입하기 때문에 head의 next는 바뀌지 않고 prev만 바꿔주면 된다.
 		auto new_node = new node{ new T(value),NULL,NULL };
 		++n;
 		auto dummy = head->prev;
