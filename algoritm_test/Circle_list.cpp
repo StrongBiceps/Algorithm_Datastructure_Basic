@@ -448,6 +448,7 @@ public:
 	}
 	Cir_list(const Cir_list<T>& other) :Cir_list()
 	{
+		//dummy부터 거꾸로 삽입해야 순서가 맞다. head부터 삽입하면 other의 head가 복사한 뒤로는 dummy가 된다.
 		for (const auto i : other)
 		{
 			insert(i);
