@@ -65,6 +65,8 @@ public:
 		auto cur = head;
 		auto dummy = head->prev;
 
+		//dummy == value인 상황도 생각해야 한다. 여기에는 없지만 코딩은 단순할 것이다.
+
 		while (cur != dummy)
 		{
 			if (*(cur->Data) == value)
