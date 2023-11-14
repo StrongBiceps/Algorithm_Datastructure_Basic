@@ -125,6 +125,8 @@ public:
 
 		//friend로 선언해야 클래스 외부에서 호출할 수 있다.
 		//범위 기반 반복문에서 호출한다.
+		// == 는 이항 연산자이기 때문에 매개변수가 2개 필요하다. 따라서 멤버 함수로 만들 수 없다.
+		//이 코드는 전역 함수를 friend 함수로 만들고 클래스 내부에 선언하여 Inline 최적화한 것이다. 즉, 이 함수는 멤버함수가 아니다.
 		friend bool operator==(const Cir_list_it& it1, const Cir_list_it& it2)
 		{
 			return it1.ptr == it2.ptr;
